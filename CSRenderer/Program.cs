@@ -46,7 +46,7 @@ namespace CSRenderer {
                                                              70f);
 
             Renderer renderer = new Renderer(world, light, camera);
-            int n = 2048;
+            int n = 512;
             //renderer.ParaRender(n, n);
             renderer.SavePicture(n, n);
             ExecCmd();
