@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
-    interface Light {
-        float Sample(InterResult inter, Collider c, Ray reflRay);
+    class Entity {
+        private Shape shape;
+        public float diffuse;
+        public float mirror;
     }
 }

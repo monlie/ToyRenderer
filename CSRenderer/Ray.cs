@@ -17,5 +17,15 @@ namespace CSRenderer {
         public Vec3d GetFront(float t) {
             return position + t * direction;
         }
+
+        public Ray Reflect(InterResult inter) {
+            Vec3d pos = inter.position;
+
+            Vec3d normal = inter.entity.GetNormal(pos);
+            Vec3d tmp = direction - normal % direction * normal;
+            tmp = 2 * tmp - direction;
+            tmp.Normalize();
+            return new Ray(pos, tmp);
+        }
     }
 }

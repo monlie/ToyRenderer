@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ball.cs" />
     <Compile Include="DirectionalLight.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="InterResult.cs" />
     <Compile Include="Light.cs" />
     <Compile Include="PerspectiveCamera.cs" />

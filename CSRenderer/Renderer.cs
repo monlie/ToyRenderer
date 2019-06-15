@@ -17,12 +17,20 @@ namespace CSRenderer {
             camera = c;
         }
 
-        private float Trace(Ray ray) {
-            // diffuse reflection surface
+        private float Trace(Ray ray, int times) {
             float color = 0f;
             InterResult inter = collider.Collide(ray);
+
             if (inter != null) {
-                foreach (Light l in lights) { color += l.Sample(inter, collider); }
+                Ray reflRay = ray.Reflect(inter);
+
+                // reflection
+                if (times < 5) {
+                    color += 0.2f * Trace(reflRay, times + 1);
+                }
+
+                // diffuse reflection surface
+                foreach (Light l in lights) { color += l.Sample(inter, collider, reflRay); }
             }
             return color;
         }
@@ -33,7 +41,7 @@ namespace CSRenderer {
             for (int i = 0; i < rx; i++) {
                 for (int j = 0; j < ry; j++) {
                     ray = camera.SightLine(i / (float)rx, j / (float)ry);
-                    photo[j, i] = Trace(ray);
+                    photo[j, i] = Trace(ray, 0);
                 }
             }
             return photo;
@@ -45,7 +53,7 @@ namespace CSRenderer {
                 int i = idx % rx;
                 int j = idx / rx;
                 Ray ray = camera.SightLine(i / (float)rx, j / (float)ry);
-                photo[j, i] = Trace(ray);
+                photo[j, i] = Trace(ray, 0);
             });
             return photo;
         }

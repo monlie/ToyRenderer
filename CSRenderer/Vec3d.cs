@@ -49,6 +49,10 @@ namespace CSRenderer {
             return new Vec3d(k * v.x, k * v.y, k * v.z);
         }
 
+        public static Vec3d operator /(Vec3d v, float k) {
+            return new Vec3d(v.x / k, v.y / k, v.z / k);
+        }
+
         // v1 dot v2
         public static float operator %(Vec3d v1, Vec3d v2) {
             return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
