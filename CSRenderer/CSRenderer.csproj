@@ -59,6 +59,7 @@
     <Compile Include="Renderer.cs" />
     <Compile Include="Shape\Shape.cs" />
     <Compile Include="Shape\Triangle.cs" />
+    <Compile Include="STLLoader.cs" />
     <Compile Include="Vec3d.cs" />
   </ItemGroup>
   <ItemGroup>

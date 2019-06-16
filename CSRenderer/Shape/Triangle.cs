@@ -47,5 +47,9 @@ namespace CSRenderer {
             }
             return -1f;
         }
+
+        public override string ToString() {
+            return v1.ToString() + v2.ToString() + v3.ToString();
+        }
     }
 }

@@ -25,9 +25,9 @@ namespace CSRenderer {
                 Ray reflRay = ray.Reflect(inter);
 
                 // reflection
-                if (times < 5) {
-                    color += inter.entity.mirror * Trace(reflRay, times + 1);
-                }
+                //if (times < 5) {
+                //    color += inter.entity.mirror * Trace(reflRay, times + 1);
+                //}
 
                 // diffuse reflection
                 foreach (Light l in lights) { color += l.Sample(inter, collider, reflRay); }

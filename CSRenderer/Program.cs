@@ -39,20 +39,25 @@ namespace CSRenderer {
             Ball ball1 = new Ball(new Vec3d(0f, 0f, 0f), 0.2f);
             Ball ball2 = new Ball(new Vec3d(-0.4f, 0.45f, 0f), 0.2f);
             Ball ball3 = new Ball(new Vec3d(-1.3f, -0.5f, 0f), 0.2f);
-            Light dl1 = new DirectionalLight(new Vec3d(-2f, -1.6f, -1f), 20f);
+            Light dl1 = new DirectionalLight(new Vec3d(-1f, -1f, -1f), 50f);
+            Light dl2 = new DirectionalLight(new Vec3d(1f, 1f, -1f), 30f);
+            Light dl3 = new DirectionalLight(new Vec3d(-1f, 0f, -1f), 20f);
             Light pl1 = new Pointolite(new Vec3d(-0.4f, 1f, 2f), 60f);
-            Light[] light = new Light[] { dl1, pl1 };
+            Light[] light = new Light[] { dl2, dl3 };
             Shape[] world = new Shape[] { p1, p2, p3, ball1, ball2, ball3 };
-            PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(2f, 0.7f, 1f),
-                                                             new Vec3d(-1f, -0.5f, -0.7f),
+            PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(50f, -40f, 75f),
+                                                             new Vec3d(-1f, 1.5f, -0.4f),
                                                              new Vec3d(0f, 0f, 1f),
-                                                             50f);
+                                                             120f);
             List<Entity> scenes = new List<Entity>();
-            foreach (Shape shape in world) {
-                scenes.Add(new Entity(shape));
+            foreach (Shape shape in STLLoader.Load("SF.stl")) {
+                // Console.WriteLine(shape);
+                scenes.Add(new Entity(shape, 0.7f, 0f, 0.2f));
             }
+            scenes.Add(new Entity(new Plane(new Vec3d(0f, 0f, 1f), 0)));
+
             Renderer renderer = new Renderer(scenes.ToArray(), light, camera);
-            int n = 2048;
+            int n = 1024;
             //renderer.ParaRender(n, n);
             renderer.SavePicture(n, n);
             ExecCmd();
