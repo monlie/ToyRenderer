@@ -52,7 +52,7 @@ namespace CSRenderer {
                 scenes.Add(new Entity(shape));
             }
             Renderer renderer = new Renderer(scenes.ToArray(), light, camera);
-            int n = 512;
+            int n = 1024;
             //renderer.ParaRender(n, n);
             renderer.SavePicture(n, n);
             ExecCmd();
