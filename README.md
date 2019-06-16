@@ -4,7 +4,7 @@
 
 ## Supported/Supporting Features
 
-- [x] Phone lighting model
+- [x] Phong lighting model
 - [x] Reflection & Refraction
 - [x] Multithreading rendering
 - [ ] Aperture & Lens
