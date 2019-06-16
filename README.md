@@ -1,6 +1,6 @@
 # ToyRenderer
 
-![](https://github.com/monlie/ToyRenderer/blob/master/demo.png?raw=true)
+![](https://github.com/monlie/ToyRenderer/blob/master/demo.jpg?raw=true)
 
 ## Supported/Supporting Features
 
