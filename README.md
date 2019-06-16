@@ -7,6 +7,7 @@
 - [x] Phong lighting model
 - [x] Reflection & Refraction
 - [x] Multithreading rendering
+- [x] Intersection accelerating via KD-tree
 - [ ] Aperture & Lens
 - [ ] Area light
 - [ ] Voxel rendering
