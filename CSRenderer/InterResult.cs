@@ -9,9 +9,9 @@ namespace CSRenderer {
         public static InterResult None = new InterResult(0, null, null);
         public readonly float t;
         public readonly Vec3d position;
-        public readonly Shape entity;
+        public readonly Entity entity;
 
-        public InterResult(float t, Vec3d p, Shape e) {
+        public InterResult(float t, Vec3d p, Entity e) {
             this.t = t;
             position = p;
             entity = e;

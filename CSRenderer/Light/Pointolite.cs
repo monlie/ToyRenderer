@@ -7,34 +7,36 @@ using System.Threading.Tasks;
 namespace CSRenderer {
     class Pointolite : Light{
         private Vec3d position;
-        private float luminance;
 
         public Pointolite(Vec3d pos, float l) {
             position = pos;
             luminance = l;
         }
 
-        private Ray GetRay(Vec3d x) {
+        protected override Ray GetRay(Vec3d x) {
             Vec3d direction = position - x;
             direction.Normalize();
             return new Ray(x + direction * 1e-4f, direction);
         }
 
-        public float Sample(InterResult inter, Collider c, Ray reflRay) {
+        public override float Sample(InterResult inter, Collider c, Ray reflRay) {
             Vec3d x = inter.position;
+            Entity entity = inter.entity;
             Ray ray = GetRay(x);
             InterResult shadow = c.Collide(ray);
+
             if (shadow == null || shadow.t > 4) {
                 float val = 0f;
-                Vec3d normal = inter.entity.GetNormal(x);
+                Vec3d normal = entity.shape.GetNormal(x);
                 float tmp = normal % ray.direction;
+                // diffuse
                 if (tmp > 0) {
                     Vec3d r = x - position;
                     float rr = r % r;
-                    val += luminance * tmp / rr;
+                    val += entity.diffuse * luminance * tmp / rr;
                 }
-                tmp = reflRay.direction % ray.direction;
-                if (tmp > 0) val += luminance * (float)Math.Pow(tmp, 20) * 0.3f;
+                // phong specular
+                val += Specular(entity.specular, ray, reflRay);
                 return val;
             }
             return 0;

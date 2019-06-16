@@ -23,13 +23,13 @@ namespace CSRenderer {
             return (x - pos) % normal;
         }
 
-        public InterResult Intersect(Ray ray) {
+        public float Intersect(Ray ray) {
             float tmp = ray.direction % normal;
             if (tmp < 0) {
                 float t = ((pos - ray.position) % normal) / tmp;
-                if (t >= 0) return new InterResult(t, ray.GetFront(t), this);
+                if (t >= 0) return t;
             }
-            return null;
+            return -1f;
         }
     }
 }

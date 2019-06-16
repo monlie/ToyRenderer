@@ -22,7 +22,7 @@ namespace CSRenderer {
             return (pos - center).Norm() - r;
         }
 
-        public InterResult Intersect(Ray ray) {
+        public float Intersect(Ray ray) {
             Vec3d d = ray.position - center;
             float a = ray.direction % ray.direction;
             float b = 2 * ray.direction % d;
@@ -33,12 +33,12 @@ namespace CSRenderer {
                 float tmp = -b - delta;
                 if (tmp >= 0) {
                     tmp /= 2 * a;
-                    return new InterResult(tmp, ray.GetFront(tmp), this);
+                    return tmp;
                 }
                 tmp = (-b + delta) / (2 * a);
-                return new InterResult(tmp, ray.GetFront(tmp), this);
+                return tmp;
             }
-            return null;
+            return -1f;
         }
     }
 }

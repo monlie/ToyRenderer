@@ -11,7 +11,7 @@ namespace CSRenderer {
         private Light[] lights;
         private PerspectiveCamera camera;
 
-        public Renderer(Shape[] world, Light[] l, PerspectiveCamera c) {
+        public Renderer(Entity[] world, Light[] l, PerspectiveCamera c) {
             collider = new Collider(world);
             lights = l;
             camera = c;
@@ -26,10 +26,10 @@ namespace CSRenderer {
 
                 // reflection
                 if (times < 5) {
-                    color += 0.2f * Trace(reflRay, times + 1);
+                    color += inter.entity.mirror * Trace(reflRay, times + 1);
                 }
 
-                // diffuse reflection surface
+                // diffuse reflection
                 foreach (Light l in lights) { color += l.Sample(inter, collider, reflRay); }
             }
             return color;

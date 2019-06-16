@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CSRenderer {
     class Collider {
-        private readonly Shape[] world;
+        private readonly Entity[] world;
 
-        public Collider(Shape[] w) { world = w; }
+        public Collider(Entity[] w) { world = w; }
 
         public InterResult Collide(Ray ray) {
             float t = 100000;
             InterResult inter = null;
             InterResult tmp;
-            foreach (Shape entity in world) {
+            foreach (Entity entity in world) {
                 tmp = entity.Intersect(ray);
                 if (tmp != null && tmp.t >= 0 && tmp.t < t) {
                     t = tmp.t;

@@ -31,7 +31,7 @@ namespace CSRenderer {
             return 0f;
         }
 
-        public InterResult Intersect(Ray ray) {
+        public float Intersect(Ray ray) {
             Vec3d r = ray.direction.Cross(e2);
             Vec3d s = ray.position - v1;
             float a = e1 % r;
@@ -39,13 +39,13 @@ namespace CSRenderer {
             Vec3d q = s.Cross(e1);
             float u = s % r;
             if (a > 1e-6f) {
-                if (u < 0 || u > a) return null;
+                if (u < 0 || u > a) return -1f;
                 float v = ray.direction % q;
-                if (v < 0 || u + v > a) return null;
+                if (v < 0 || u + v > a) return -1f;
                 float t = f * (e2 % q);
-                return new InterResult(t, ray.GetFront(t), this);
+                return t;
             }
-            return null;
+            return -1f;
         }
     }
 }

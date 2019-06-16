@@ -47,9 +47,12 @@ namespace CSRenderer {
                                                              new Vec3d(-1f, -0.5f, -0.7f),
                                                              new Vec3d(0f, 0f, 1f),
                                                              50f);
-
-            Renderer renderer = new Renderer(world, light, camera);
-            int n = 2048;
+            List<Entity> scenes = new List<Entity>();
+            foreach (Shape shape in world) {
+                scenes.Add(new Entity(shape));
+            }
+            Renderer renderer = new Renderer(scenes.ToArray(), light, camera);
+            int n = 512;
             //renderer.ParaRender(n, n);
             renderer.SavePicture(n, n);
             ExecCmd();
