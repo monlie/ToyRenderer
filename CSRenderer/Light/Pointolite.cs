@@ -19,27 +19,27 @@ namespace CSRenderer {
             return new Ray(x + direction * 1e-4f, direction);
         }
 
-        public override float Sample(InterResult inter, Collider c, Ray reflRay) {
+        public override Vec3d Sample(InterResult inter, Collider c, Ray reflRay) {
             Vec3d x = inter.position;
             Entity entity = inter.entity;
             Ray ray = GetRay(x);
             InterResult shadow = c.Collide(ray);
 
             if (shadow == null || shadow.t > 4) {
-                float val = 0f;
+                Vec3d val = Vec3d.Zero;
                 Vec3d normal = entity.shape.GetNormal(x);
                 float tmp = normal % ray.direction;
                 // diffuse
                 if (tmp > 0) {
                     Vec3d r = x - position;
                     float rr = r % r;
-                    val += entity.diffuse * luminance * tmp / rr;
+                    val += entity.color * entity.diffuse * luminance * tmp / rr;
                 }
                 // phong specular
-                val += Specular(entity.specular, ray, reflRay);
+                val += Specular(entity.specular, entity.color, ray, reflRay);
                 return val;
             }
-            return 0;
+            return Vec3d.Zero;
         }
     }
 }

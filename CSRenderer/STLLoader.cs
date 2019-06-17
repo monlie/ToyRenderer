@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace CSRenderer {
-    class STLLoader {
+    class StlLoader {
 
         private static Vec3d LoadVec(BinaryReader bw) {
             return new Vec3d(bw.ReadSingle(), bw.ReadSingle(), bw.ReadSingle());

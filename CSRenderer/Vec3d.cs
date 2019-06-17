@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSRenderer {
     class Vec3d {
+        public static Vec3d Zero = new Vec3d(0f, 0f, 0f);
         public float x;
         public float y;
         public float z;
@@ -37,6 +38,10 @@ namespace CSRenderer {
 
         public static Vec3d operator -(Vec3d v) {
             return new Vec3d(-v.x, -v.y, -v.z);
+        }
+
+        public static Vec3d operator *(Vec3d v1, Vec3d v2) {
+            return new Vec3d(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
         }
 
         // right number multiplication
