@@ -26,7 +26,7 @@ namespace CSRenderer {
 
                 // reflection
                 if (inter.entity.mirror > 1e-4 && times < 5) {
-                    color += inter.entity.mirror * Trace(reflRay, times + 1);
+                    color += inter.entity.color * inter.entity.mirror * Trace(reflRay, times + 1);
                 }
 
                 // diffuse reflection
