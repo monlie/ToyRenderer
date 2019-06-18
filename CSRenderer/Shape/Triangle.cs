@@ -51,5 +51,10 @@ namespace CSRenderer {
         public override string ToString() {
             return v1.ToString() + v2.ToString() + v3.ToString();
         }
+
+        public void GetUV(Vec3d x, out float u, out float v) {
+            u = 0f;
+            v = 0f;
+        }
     }
 }

@@ -40,5 +40,10 @@ namespace CSRenderer {
             }
             return -1f;
         }
+
+        public void GetUV(Vec3d x, out float u, out float v) {
+            u = 0f;
+            v = 0f;
+        }
     }
 }

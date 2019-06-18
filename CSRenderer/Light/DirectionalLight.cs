@@ -18,12 +18,12 @@ namespace CSRenderer {
             return new Ray(ox - direction * 1e-4f, -direction);
         }
 
-        protected override Vec3d Diffuse(InterResult inter, Ray lightRay) {
+        protected override Vec3d Diffuse(InterResult inter, Vec3d entityColor, Ray lightRay) {
             Entity entity= inter.entity;
             Vec3d x = inter.position;
             Vec3d normal = entity.shape.GetNormal(x);
             float tmp = normal % lightRay.direction;
-            if (tmp > 0) return entity.color * entity.diffuse * luminance * tmp;
+            if (tmp > 0) return entityColor * entity.diffuse * luminance * tmp;
             return Vec3d.Zero;
         }
     }
