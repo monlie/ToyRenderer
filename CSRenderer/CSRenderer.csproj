@@ -74,6 +74,11 @@
     <Compile Include="KdTree.cs" />
     <Compile Include="KdTreeNode.cs" />
     <Compile Include="Mapping.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RenderTest.cs" />
     <Compile Include="Shape\Ball.cs" />
     <Compile Include="Light\DirectionalLight.cs" />
@@ -99,6 +104,10 @@
   <ItemGroup>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -15,9 +15,9 @@ namespace CSRenderer {
 
         private static float matMax(float[,,] mat, int scale) {
             float max = 0f;
-            for (int i = 1; i < scale; i++) {
-                for (int j = 1; j < scale; j++) {
-                    for (int k = 1; k < 3; k++) {
+            for (int i = 0; i < scale; i++) {
+                for (int j = 0; j < scale; j++) {
+                    for (int k = 0; k < 3; k++) {
                         if (mat[j, i, k] > max) max = mat[j, i, k];
                     }
                 }
@@ -86,11 +86,11 @@ namespace CSRenderer {
             float[,,] img = ParaRender(rx, ry);
             float max = matMax(img, rx);
             Bitmap btm = new Bitmap(rx, ry);
-            for (int i = 1; i < rx; i++) {
-                for (int j = 1; j < ry; j++) {
-                    r = Convert.ToInt32(255f * img[j, i, 0] / max);
-                    g = Convert.ToInt32(255f * img[j, i, 1] / max);
-                    b = Convert.ToInt32(255f * img[j, i, 2] / max);
+            for (int i = 0; i < rx; i++) {
+                for (int j = 0; j < ry; j++) {
+                    r = (int)(255f * img[j, i, 0] / max);
+                    g = (int)(255f * img[j, i, 1] / max);
+                    b = (int)(255f * img[j, i, 2] / max);
                     btm.SetPixel(i, ry - j - 1, Color.FromArgb(r, g, b));
                 }
             }

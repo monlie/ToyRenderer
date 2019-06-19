@@ -10,7 +10,7 @@ namespace CSRenderer {
         public static Vec3d One = new Vec3d(1f, 1f, 1f);
         public static Vec3d Up = new Vec3d(0f, 0f, 1f);
         public static Vec3d Right = new Vec3d(0f, 1f, 0f);
-        public static Vec3d Front = new Vec3d(-1f, 0f, 0f);
+        public static Vec3d Front = new Vec3d(1f, 0f, 0f);
 
         public float x;
         public float y;

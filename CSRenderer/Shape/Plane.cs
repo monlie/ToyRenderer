@@ -12,6 +12,7 @@ namespace CSRenderer {
         private Vec3d vVec;
         private int width = 50;
         private int height = 50;
+        private Mapping normalMapping = null;
 
         public Plane(Vec3d n, float l) {
             n.Normalize();
@@ -31,10 +32,11 @@ namespace CSRenderer {
             vVec = normal.Cross(uVec);
         }
 
-        public Plane(Vec3d n, float l, int w, int h) {
+        public Plane(Vec3d n, float l, int w, int h, Mapping mapping) {
             n.Normalize();
             pos = l * n;
             normal = n;
+            normalMapping = mapping;
 
             Vec3d tmp = Vec3d.Up.Cross(normal);
             if (tmp.Norm() < 1e-3) {
@@ -53,7 +55,11 @@ namespace CSRenderer {
         }
 
         public Vec3d GetNormal(Vec3d pos) {
-            return normal;
+            if (normalMapping == null) return normal;
+            GetUV(pos, out float u, out float v);
+            Vec3d n = normalMapping.GetColor(u, 1-v) - 0.5f * Vec3d.One;
+            n = n.x * uVec + n.y * vVec + n.z * normal;
+            return 2 * n;
         }
 
         public float SDF(Vec3d x) {
@@ -71,8 +77,8 @@ namespace CSRenderer {
 
         public void GetUV(Vec3d x, out float u, out float v) {
             x = x - pos;
-            u = x % this.uVec;
-            v = x % this.vVec;
+            u = x % uVec;
+            v = x % vVec;
             u /= width;
             v /= height;
             u -= (float)Math.Floor(u);
