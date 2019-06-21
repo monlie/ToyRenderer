@@ -46,11 +46,11 @@ namespace CSRenderer.GUI {
             }
         }
 
-        private void picRenderResult_MouseMove(object sender, MouseEventArgs e) {
+        private void PicRenderResult_MouseMove(object sender, MouseEventArgs e) {
             label1.Text = ((Bitmap)picRenderResult.Image).GetPixel(e.X, e.Y).ToString();
         }
 
-        private void picRenderResult_MouseLeave(object sender, EventArgs e) {
+        private void PicRenderResult_MouseLeave(object sender, EventArgs e) {
             label1.Text = "";
         }
     }

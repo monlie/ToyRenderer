@@ -43,8 +43,8 @@
             this.picRenderResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.picRenderResult.TabIndex = 0;
             this.picRenderResult.TabStop = false;
-            this.picRenderResult.MouseLeave += new System.EventHandler(this.picRenderResult_MouseLeave);
-            this.picRenderResult.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picRenderResult_MouseMove);
+            this.picRenderResult.MouseLeave += new System.EventHandler(this.PicRenderResult_MouseLeave);
+            this.picRenderResult.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PicRenderResult_MouseMove);
             // 
             // contextMenuStrip1
             // 
