@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSRenderer {
     class Collider {
-        private readonly Entity[] world;
+        protected readonly Entity[] world;
 
         public Collider(Entity[] w) { world = w; }
 

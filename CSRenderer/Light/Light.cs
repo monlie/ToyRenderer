@@ -17,7 +17,7 @@ namespace CSRenderer {
             return Vec3d.Zero;
         }
 
-        public Vec3d Sample(InterResult inter, Collider c, Vec3d entityColor, Ray reflRay) {
+        public Vec3d Sample(InterResult inter, KdTCollider c, Vec3d entityColor, Ray reflRay) {
             Vec3d x = inter.position;
             Entity entity = inter.entity;
             Ray ray = GetRay(x);

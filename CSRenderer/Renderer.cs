@@ -8,7 +8,7 @@ using System.IO;
 
 namespace CSRenderer {
     class Renderer {
-        private Collider collider;
+        private KdTCollider collider;
         private Light[] lights;
         private PerspectiveCamera camera;
         private bool calcReflection = true;
@@ -26,7 +26,7 @@ namespace CSRenderer {
         }
 
         public Renderer(Entity[] world, Light[] l, PerspectiveCamera c) {
-            collider = new Collider(world);
+            collider = new KdTCollider(world);
             lights = l;
             camera = c;
         }
