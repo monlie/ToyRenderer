@@ -10,15 +10,17 @@ namespace CSRenderer {
         public float diffuse = 0.9f;
         public float mirror = 0f;
         public float specular = 0.1f;
+        public float refraction = 0f;
         public Vec3d color = new Vec3d(1f, 1f, 1f);
         public Mapping mapping = null;
 
-        public Entity(Shape shape, Vec3d color, float d, float m, float s) {
+        public Entity(Shape shape, Vec3d color, float d, float m, float s, float refr) {
             this.shape = shape;
             this.color = color;
             diffuse = d;
             mirror = m;
             specular = s;
+            refraction = refr;
         }
 
         public Entity(Shape shape, Mapping map, float d, float m, float s) {

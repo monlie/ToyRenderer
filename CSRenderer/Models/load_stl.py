@@ -28,7 +28,7 @@ def load_stl(filename):
     
 
 if __name__ == "__main__":
-    a = load_stl('SF.stl')
+    a = load_stl('Teapot.stl')
     print(a.shape)
     ax = plt.subplot(111, projection='3d')  # 创建一个三维的绘图工程
     ax.scatter(a[:, 0], a[:, 1], a[:, 2], c='y')  # 绘制数据点
