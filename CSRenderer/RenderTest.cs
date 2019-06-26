@@ -27,9 +27,10 @@ namespace CSRenderer {
                 scenes.Add(new Entity(shape, new Vec3d(0f, 0.5f, 1f), 0.6f, 0f, 0.4f));
             }
 
-            Mapping m1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\weathered-steel-zaragoza.jpg");
-            Mapping m2 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\granite-rainscreen-cladding-aveiro.jpg");
+            //Mapping m1 = new Mapping("C:\\Users\\wrvsrx\\OneDrive\\Document\\project\\graph\\ToyRenderer\\CSRenderer\\Mappings\\weathered-steel-zaragoza.jpg");
+            //Mapping m2 = new Mapping("C:\\Users\\wrvsrx\\OneDrive\\Document\\project\\graph\\ToyRenderer\\CSRenderer\\Mappings\\granite-rainscreen-cladding-aveiro.jpg");
             // Mapping nm1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\brick_NRM.png");
+            Mapping m1 = null,m2=null,nm1=null;
             scenes.Add(new Entity(new Plane(new Vec3d(0f, 0f, 1f), 0f, 90, 64, null), m2, 1f, 0f, 0f));
             scenes.Add(new Entity(new Plane(new Vec3d(0f, -1f, 0f), -40f, 75, 90, null), m1));
             scenes.Add(new Entity(new Plane(new Vec3d(1f, 0f, 0f), -110f, 75, 90, null), m1));

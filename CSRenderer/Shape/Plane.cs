@@ -52,9 +52,11 @@ namespace CSRenderer {
 
             width = w;
             height = h;
+
+            box = null;
         }
 
-        public Vec3d GetNormal(Vec3d pos) {
+        public override Vec3d GetNormal(Vec3d pos) {
             if (normalMapping == null) return normal;
             GetUV(pos, out float u, out float v);
             Vec3d n = normalMapping.GetColor(u, 1-v) - 0.5f * Vec3d.One;
@@ -62,11 +64,11 @@ namespace CSRenderer {
             return 2 * n;
         }
 
-        public float SDF(Vec3d x) {
+        public override float SDF(Vec3d x) {
             return (x - pos) % normal;
         }
 
-        public float Intersect(Ray ray) {
+        public override float Intersect(Ray ray) {
             float tmp = ray.direction % normal;
             if (tmp < 0) {
                 float t = ((pos - ray.position) % normal) / tmp;
@@ -75,7 +77,7 @@ namespace CSRenderer {
             return -1f;
         }
 
-        public void GetUV(Vec3d x, out float u, out float v) {
+        public override void GetUV(Vec3d x, out float u, out float v) {
             x = x - pos;
             u = x % uVec;
             v = x % vVec;

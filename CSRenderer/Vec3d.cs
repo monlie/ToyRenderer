@@ -16,7 +16,7 @@ namespace CSRenderer {
         public float y;
         public float z;
 
-        public Vec3d(float x, float y, float z) {
+        public Vec3d(float x=0f, float y=0f, float z=0f) {
             this.x = x;
             this.y = y;
             this.z = z;
