@@ -38,7 +38,7 @@ namespace CSRenderer {
             if (inter != null) {
                 Ray reflRay = ray.Reflect(inter);
                 Entity entity = inter.entity;
-                Vec3d entityColor = entity.shape.GetType() != typeof(Plane) ? entity.color : entity.GetColor(inter.position);
+                Vec3d entityColor = entity.GetColor(inter.position);
 
                 // reflection
                 if (inter.entity.mirror > 1e-4 && calcReflection && times < 5) {
