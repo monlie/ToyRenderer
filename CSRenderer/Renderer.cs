@@ -40,9 +40,21 @@ namespace CSRenderer {
                 Entity entity = inter.entity;
                 Vec3d entityColor = entity.GetColor(inter.position);
 
+                // refraction
+                if (entity.refraction > 1) {
+                    Ray refrRay = ray.Refract(inter, out bool isBack);
+                    if (refrRay != null) {
+                        // Console.WriteLine(refrRay.direction % ray.direction);
+
+                        Vec3d refr = 0.8f * Trace(refrRay, times);
+                        color += refr;
+                        if (isBack) return refr;
+                    }
+                }
+
                 // reflection
-                if (inter.entity.mirror > 1e-4 && calcReflection && times < 5) {
-                    color += entityColor * inter.entity.mirror * Trace(reflRay, times + 1);
+                if (entity.mirror > 1e-4 && calcReflection && times < 5) {
+                    color += entityColor * entity.mirror * Trace(reflRay, times + 1);
                 }
 
                 // diffuse reflection

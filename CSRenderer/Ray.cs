@@ -27,5 +27,24 @@ namespace CSRenderer {
             tmp.Normalize();
             return new Ray(pos, tmp);
         }
+
+        public Ray Refract(InterResult inter, out bool isBack) {
+            Vec3d pos = GetFront(inter.t + 1e-3f);
+            Vec3d normal = inter.entity.shape.GetNormal(inter.position);
+            float rate = inter.entity.refraction;
+            float tmp = direction % normal;
+            isBack = true;
+            // out to inner
+            if (tmp < 0) {
+                isBack = false;
+                rate = 1 / rate;
+                tmp = -tmp;
+                normal = -normal;
+            }
+            float squarecos = 1 - rate * rate * (1 - tmp * tmp);
+            if (squarecos <= 0) return null;
+            Vec3d d = rate * direction - (rate * tmp - (float)Math.Sqrt(squarecos)) * normal;
+            return new Ray(pos, d);
+        }
     }
 }

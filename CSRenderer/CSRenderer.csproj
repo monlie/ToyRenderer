@@ -79,7 +79,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RenderTest.cs" />
+    <Compile Include="RenderSF.cs" />
+    <Compile Include="RenderTeapot.cs" />
     <Compile Include="Shape\Ball.cs" />
     <Compile Include="Light\DirectionalLight.cs" />
     <Compile Include="Entity.cs" />

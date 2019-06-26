@@ -41,7 +41,7 @@ namespace CSRenderer.GUI {
 
         private void Form1_Activated(object sender, EventArgs e) {
             if (picRenderResult.Image == null) {
-                Renderer renderer = RenderTest.Build();
+                Renderer renderer = RenderTeapot.Build();
                 picRenderResult.Image = renderer.GetImage(n, n);
             }
         }
