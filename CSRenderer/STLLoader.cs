@@ -12,7 +12,7 @@ namespace CSRenderer {
         }
 
         public static Shape[] Load(string path) {
-            path = "C:\\Users\\wrvsrx\\OneDrive\\Document\\project\\graph\\ToyRenderer\\CSRenderer\\Models\\" + path;
+            path = "C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Models\\" + path;
             BinaryReader bw = new BinaryReader(new FileStream(path, FileMode.Open));
             List<Triangle> result = new List<Triangle>();
             Vec3d normal;
