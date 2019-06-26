@@ -11,7 +11,7 @@ using System.IO;
 
 namespace CSRenderer.GUI {
     public partial class Form1 : Form {
-        private int n = 256;
+        private int n = 512;
 
         public Form1() {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace CSRenderer.GUI {
 
         private void Form1_Activated(object sender, EventArgs e) {
             if (picRenderResult.Image == null) {
-                Renderer renderer = RenderTest.Build();
+                Renderer renderer = RenderTeapot.Build();
                 picRenderResult.Image = renderer.GetImage(n, n);
             }
         }
