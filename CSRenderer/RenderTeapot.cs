@@ -29,7 +29,7 @@ namespace CSRenderer {
                 scenes.Add(new Entity(shape, new Vec3d(0f, 0.5f, 1f), 0f, 0f, 0.2f, 1.3f));
             }
 
-            Mapping m1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\weathered-steel-zaragoza.jpg");
+            Mapping m1 = new Mapping("C:\\Users\\wrvsrx\\OneDrive\\Document\\project\\graph\\ToyRenderer\\CSRenderer\\Mappings\\weathered-steel-zaragoza.jpg");
             // Mapping m2 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\granite-rainscreen-cladding-aveiro.jpg");
             // Mapping nm1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\brick_NRM.png");
             Mapping m2 = null;
