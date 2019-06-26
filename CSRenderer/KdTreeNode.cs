@@ -11,37 +11,33 @@ namespace CSRenderer
         public List<Entity> entities;
         public bool isLeaf;
         public int deep;
-        public int maxdeep;
         public byte axis;
         public float position;
         public Box box;
         public KdTreeNode left;
         public KdTreeNode right;
-        public float Intersect(Ray ray)
-        {
-            return 0f;
-        }
+
         private byte relative(Entity item, byte axis2, float pos)
         {
             byte relativepos = 1;
-            bool l = false, r = false,l1=false,r1=false;
+            bool l = false, r = false, l1 = false, r1 = false;
             switch (axis2)
             {
                 case 0:
-                    l = item.shape.box.min.x < pos;
                     r = item.shape.box.max.x < pos;
+                    l1 = item.shape.box.min.x > pos;
                     break;
                 case 1:
-                    l = item.shape.box.min.y < pos;
                     r = item.shape.box.max.y < pos;
-                     break;
+                    l1 = item.shape.box.min.y > pos;
+                    break;
                 case 2:
-                    l = item.shape.box.min.z < pos;
                     r = item.shape.box.max.z < pos;
+                    l1 = item.shape.box.min.z > pos;
                     break;
             }
-            if (l && r) { relativepos = 0; }
-            else if (!l && !r) { relativepos = 2; }
+            if (r) { relativepos = 0; }
+            else if (l1) { relativepos = 2; }
             return relativepos;
         }
         private float cost(List<Entity> whole, byte axis2, float pos)
@@ -67,7 +63,7 @@ namespace CSRenderer
             foreach (Entity item in whole)
             {
                 int relativepos = relative(item, axis2, pos);
-                if(pos ==0)
+                if (pos == 0)
                 {
                     pos += 0;
                 }
@@ -87,29 +83,42 @@ namespace CSRenderer
             //}
             return o;
         }
-        public KdTreeNode(List<Entity> whole,int d=0,int maxdeep=0)
+        public KdTreeNode(List<Entity> whole, int d = 0, int maxdeep = 0, Box bigbox = null)
         {
             entities = null;
             deep = d;
-            if (maxdeep == 0) maxdeep = 8 + (int)Math.Log10(whole.Count);
-            Box largestbox = new Box();
-            largestbox.min.x = float.MaxValue;
-            largestbox.min.y = float.MaxValue;
-            largestbox.min.z = float.MaxValue;
-            largestbox.max.x = float.MinValue;
-            largestbox.max.y = float.MinValue;
-            largestbox.max.z = float.MinValue;
-            foreach (Entity item in whole)
+            if (deep <= 3)
             {
-                Box tmp = item.shape.box;
-                if (tmp.min.x < largestbox.min.x) largestbox.min.x = tmp.min.x;
-                if (tmp.max.x > largestbox.max.x) largestbox.max.x = tmp.max.x;
-                if (tmp.min.y < largestbox.min.y) largestbox.min.y = tmp.min.y;
-                if (tmp.max.y > largestbox.max.y) largestbox.max.y = tmp.max.y;
-                if (tmp.min.z < largestbox.min.z) largestbox.min.z = tmp.min.z;
-                if (tmp.max.z > largestbox.max.z) largestbox.max.z = tmp.max.z;
+                deep = deep;
             }
-            box = largestbox;
+            if (maxdeep == 0) maxdeep = 8 + (int)Math.Log10(whole.Count);
+            
+                Box largestbox = new Box();
+                largestbox.min.x = float.MaxValue;
+                largestbox.min.y = float.MaxValue;
+                largestbox.min.z = float.MaxValue;
+                largestbox.max.x = float.MinValue;
+                largestbox.max.y = float.MinValue;
+                largestbox.max.z = float.MinValue;
+                foreach (Entity item in whole)
+                {
+                    Box tmp = item.shape.box;
+                    if (tmp.min.x < largestbox.min.x) largestbox.min.x = tmp.min.x;
+                    if (tmp.max.x > largestbox.max.x) largestbox.max.x = tmp.max.x;
+                    if (tmp.min.y < largestbox.min.y) largestbox.min.y = tmp.min.y;
+                    if (tmp.max.y > largestbox.max.y) largestbox.max.y = tmp.max.y;
+                    if (tmp.min.z < largestbox.min.z) largestbox.min.z = tmp.min.z;
+                    if (tmp.max.z > largestbox.max.z) largestbox.max.z = tmp.max.z;
+                }
+                
+            if (bigbox == null)
+            {
+                box = largestbox;
+            }
+            else
+            {
+                box = bigbox;
+            }
             float cos = float.MaxValue;
             float pos = 0;
             byte ax = 0;
@@ -121,7 +130,7 @@ namespace CSRenderer
                     switch (axies)
                     {
                         case 0:
-                            lpos = item.shape.box.min.x>box.min.x?item.shape.box.min.x:box.min.x;
+                            lpos = item.shape.box.min.x > box.min.x ? item.shape.box.min.x : box.min.x;
                             rpos = item.shape.box.max.x < box.max.x ? item.shape.box.max.x : box.max.x;
                             break;
                         case 1:
@@ -151,11 +160,11 @@ namespace CSRenderer
                         pos = rpos;
                         ax = axies;
                     }
-                    
+
                 }
             }
-            int nosplitcos = 1 + 3*whole.Count;
-            if (2* cos >= nosplitcos || deep >=9)
+            int nosplitcos = 1 + 3 * whole.Count;
+            if (2 * cos >= nosplitcos || deep >= maxdeep)
             {
                 isLeaf = true;
                 entities = whole;
@@ -181,8 +190,31 @@ namespace CSRenderer
                     }
                 }
                 deep++;
-                left = new KdTreeNode(leftwhole,deep,maxdeep);
-                right = new KdTreeNode(rightwhole,deep,maxdeep);
+                Box lbox = new Box();
+                Box rbox = new Box();
+                lbox.min.x = rbox.min.x = box.min.x;
+                lbox.max.x = rbox.max.x = box.max.x;
+                lbox.min.y = rbox.min.y = box.min.y;
+                lbox.max.y = rbox.max.y = box.max.y;
+                lbox.min.z = rbox.min.z = box.min.z;
+                lbox.max.z = rbox.max.z = box.max.z;
+                switch (axis)
+                {
+                    case 0:
+                        rbox.min.x = pos - 0.01f;
+                        lbox.max.x = pos + 0.01f;
+                        break;
+                    case 1:
+                        rbox.min.y = pos - 0.01f;
+                        lbox.max.y = pos + 0.01f;
+                        break;
+                    case 2:
+                        rbox.min.z = pos-0.01f;
+                        lbox.max.z = pos+0.01f;
+                        break;
+                }
+                left = new KdTreeNode(leftwhole, deep, maxdeep, lbox);
+                right = new KdTreeNode(rightwhole, deep, maxdeep, rbox);
             }
 
         }
