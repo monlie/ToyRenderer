@@ -46,7 +46,7 @@ namespace CSRenderer {
                     if (refrRay != null) {
                         // Console.WriteLine(refrRay.direction % ray.direction);
 
-                        Vec3d refr = 0.8f * Trace(refrRay, times);
+                        Vec3d refr = 0.7f * Trace(refrRay, times);
                         color += refr;
                         if (isBack) return refr;
                     }

@@ -24,7 +24,7 @@ namespace CSRenderer {
                                                              120f);
             List<Entity> scenes = new List<Entity>();
             foreach (Shape shape in StlLoader.Load("SF.stl")) {
-                scenes.Add(new Entity(shape, new Vec3d(0f, 0.5f, 1f), 0.3f, 0f, 0.1f, 1.3f));
+                scenes.Add(new Entity(shape, new Vec3d(0.2f, 0.5f, 1f), 0.8f, 0f, 0.2f, 0f));
             }
 
             Mapping m1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\weathered-steel-zaragoza.jpg");

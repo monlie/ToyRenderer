@@ -25,7 +25,7 @@ namespace CSRenderer {
             Vec3d val = Vec3d.Zero;
 
             // infinite plane cannot hid the light
-            if (shadow == null || shadow.entity.shape.GetType() == typeof(Plane)) {
+            if (shadow == null || shadow.entity.shape.GetType() == typeof(Plane) || shadow.entity.refraction > 1) {
                 // diffuse
                 val += Diffuse(inter, entityColor, ray);
                 // phong specular

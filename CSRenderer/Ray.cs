@@ -19,9 +19,9 @@ namespace CSRenderer {
         }
 
         public Ray Reflect(InterResult inter) {
-            Vec3d pos = inter.position;
+            Vec3d pos = GetFront(inter.t - 1e-4f);
 
-            Vec3d normal = inter.entity.shape.GetNormal(pos);
+            Vec3d normal = inter.entity.shape.GetNormal(inter.position);
             Vec3d tmp = direction - normal % direction * normal;
             tmp = 2 * tmp - direction;
             tmp.Normalize();
@@ -29,7 +29,7 @@ namespace CSRenderer {
         }
 
         public Ray Refract(InterResult inter, out bool isBack) {
-            Vec3d pos = GetFront(inter.t + 1e-3f);
+            Vec3d pos = GetFront(inter.t + 1e-4f);  // try different numbers
             Vec3d normal = inter.entity.shape.GetNormal(inter.position);
             float rate = inter.entity.refraction;
             float tmp = direction % normal;

@@ -20,24 +20,28 @@ namespace CSRenderer {
 
             Light[] light = new Light[] { dl1, dl2 };
 
-            PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(0f, -11, 6.5f),
+            PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(0f, -21, 6.5f),
                                                              new Vec3d(0f, 1f, 0f),
                                                              new Vec3d(0f, 0f, 1f),
-                                                             120f);
+                                                             80f);
             List<Entity> scenes = new List<Entity>();
             foreach (Shape shape in StlLoader.Load("Teapot.stl")) {
-                scenes.Add(new Entity(shape, new Vec3d(0f, 0.5f, 1f), 0f, 0f, 0.2f, 1.3f));
+                scenes.Add(new Entity(shape, new Vec3d(1f, 0.5f, 0.3f), 0.55f, 0.25f, 0.2f, 0));
             }
 
-            Mapping m1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\weathered-steel-zaragoza.jpg");
-            // Mapping m2 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\granite-rainscreen-cladding-aveiro.jpg");
+            Mapping m1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\metro-tiles.jpg");
+            Mapping m2 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\marble.jpg");
             // Mapping nm1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\brick_NRM.png");
-            Mapping m2 = null;
-            scenes.Add(new Entity(new Plane(new Vec3d(0f, 0f, 1f), 0f, 90, 64, null), m2, 0.7f, 0.2f, 0.1f));
-            scenes.Add(new Entity(new Plane(new Vec3d(0f, 0f, -1f), -30f, 90, 64, null), m2, 1f, 0f, 0f));
-            scenes.Add(new Entity(new Plane(new Vec3d(0f, -1f, 0f), -12f, 25, 30, null), m1));
-            scenes.Add(new Entity(new Plane(new Vec3d(1f, 0f, 0f), -15f, 25, 30, null), m1));
-            scenes.Add(new Entity(new Plane(new Vec3d(-1f, 0f, 0f), -15f, 25, 30, null), m1));
+            // Mapping m2 = null;
+            scenes.Add(new Entity(new Plane(new Vec3d(0f, 0f, 1f), 0f, 5, 5, null), m2, 0.7f, 0.2f, 0.1f));
+            scenes.Add(new Entity(new Plane(new Vec3d(0f, 0f, -1f), -30f, 90, 64, null), null, 1f, 0f, 0f));
+            scenes.Add(new Entity(new Plane(new Vec3d(0f, -1f, 0f), -10f, 25, 25, null), m1));
+            scenes.Add(new Entity(new Plane(new Vec3d(1f, 0f, 0f), -15f, 25, 25, null), m1));
+            scenes.Add(new Entity(new Plane(new Vec3d(-1f, 0f, 0f), -15f, 25, 25, null), m1));
+            //scenes.Add(new Entity(new Ball(new Vec3d(4f, -15f, 6f), 3), new Vec3d(1f, 1f, 1f), 0.1f, 0f, 0.2f, 1.5f));
+            //scenes.Add(new Entity(new Ball(new Vec3d(-4f, -13f, 4f), 2.5f), new Vec3d(1f, 1f, 1f), 0.1f, 0f, 0.2f, 1.5f));
+
+
 
             Renderer renderer = new Renderer(scenes.ToArray(), light, camera);
             return renderer;
