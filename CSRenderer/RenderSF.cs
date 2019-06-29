@@ -16,7 +16,7 @@ namespace CSRenderer {
             Light dl3 = new DirectionalLight(new Vec3d(-1f, 0f, -1f), 20f);
             Light pl1 = new Pointolite(new Vec3d(0f, -10f, 120f), 100f);
 
-            Light[] light = new Light[] { dl2, dl3, pl1};
+            Light[] light = new Light[] { dl1,dl2, dl3, pl1};
 
             PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(50f, -40f, 75f),
                                                              new Vec3d(-1f, 1.5f, -0.4f),
@@ -24,7 +24,7 @@ namespace CSRenderer {
                                                              120f);
             List<Entity> scenes = new List<Entity>();
             foreach (Shape shape in StlLoader.Load("SF.stl")) {
-                scenes.Add(new Entity(shape, new Vec3d(0f, 0.5f, 1f), 0.3f, 0f, 0.1f, 1.3f));
+                scenes.Add(new Entity(shape, new Vec3d(0f, 0.5f, 1f), 0.8f, 0f, 0.2f,0f));
             }
 
 

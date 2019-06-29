@@ -85,7 +85,6 @@
     </Compile>
     <Compile Include="RenderSF.cs" />
     <Compile Include="RenderTeapot.cs" />
-    <Compile Include="RenderTest.cs" />
     <Compile Include="Shape\Ball.cs" />
     <Compile Include="Light\DirectionalLight.cs" />
     <Compile Include="Entity.cs" />
@@ -110,6 +109,7 @@
   <ItemGroup>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

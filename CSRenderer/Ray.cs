@@ -19,7 +19,7 @@ namespace CSRenderer {
         }
 
         public Ray Reflect(InterResult inter) {
-            Vec3d pos = inter.position;
+            Vec3d pos = GetFront(inter.t + 1e-3f);
 
             Vec3d normal = inter.entity.shape.GetNormal(pos);
             Vec3d tmp = direction - normal % direction * normal;
