@@ -60,10 +60,17 @@ namespace CSRenderer {
             float f = 1 / a;
             Vec3d q = s.Cross(e1);
             float u = s % r;
-            if (a > 1e-6f) {
+            if (a > 1e-5f) {
                 if (u < 0 || u > a) return -1f;
                 float v = ray.direction % q;
                 if (v < 0 || u + v > a) return -1f;
+                float t = f * (e2 % q);
+                return t;
+            }
+            if (a < 1e-5f) {
+                if (u > 0 || u < a) return -1f;
+                float v = ray.direction % q;
+                if (v > 0 || u + v < a) return -1f;
                 float t = f * (e2 % q);
                 return t;
             }
