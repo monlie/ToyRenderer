@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSRenderer
 {
+    [Serializable]
     class Box
     {
         public Vec3d min;

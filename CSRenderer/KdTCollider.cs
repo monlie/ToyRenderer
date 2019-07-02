@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSRenderer
 {
+    [Serializable]
     class KdTCollider:Collider
     {
         private KdTreeNode tree;

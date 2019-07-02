@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     class Plane : Shape {
         public Vec3d pos;
         public Vec3d normal;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     class Triangle : Shape {
         private Vec3d v1;
         private Vec3d v2;

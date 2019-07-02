@@ -26,7 +26,9 @@ namespace CSRenderer {
         }
 
         public Renderer(Entity[] world, Light[] l, PerspectiveCamera c) {
-            collider = new KdTCollider(world);
+            //collider = new KdTCollider(world);
+            //Tools.ObjectToFile(collider, "lucy.kdt");
+            collider = Tools.FileToObject<KdTCollider>("lucy.kdt");
             lights = l;
             camera = c;
         }
@@ -45,7 +47,6 @@ namespace CSRenderer {
                     Ray refrRay = ray.Refract(inter, out bool isBack);
                     if (refrRay != null) {
                         // Console.WriteLine(refrRay.direction % ray.direction);
-
                         Vec3d refr = 0.8f * Trace(refrRay, times);
                         color += refr;
                         if (isBack) return refr;

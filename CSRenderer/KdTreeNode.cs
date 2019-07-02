@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSRenderer
 {
+    [Serializable]
     class KdTreeNode
     {
         public List<Entity> entities;

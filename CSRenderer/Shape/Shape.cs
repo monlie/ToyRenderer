@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     abstract class Shape{
         abstract public float Intersect(Ray ray);
         abstract public Vec3d GetNormal(Vec3d pos);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     class Collider {
         protected readonly Entity[] world;
 

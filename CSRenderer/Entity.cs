@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     class Entity {
         public Shape shape;
         public float diffuse = 0.9f;

@@ -40,6 +40,7 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -77,14 +78,16 @@
     </Compile>
     <Compile Include="KdTCollider.cs" />
     <Compile Include="KdTreeNode.cs" />
+    <Compile Include="Example\RenderLucy.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="Mapping.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RenderSF.cs" />
-    <Compile Include="RenderTeapot.cs" />
+    <Compile Include="Example\RenderSF.cs" />
+    <Compile Include="Example\RenderTeapot.cs" />
     <Compile Include="Shape\Ball.cs" />
     <Compile Include="Light\DirectionalLight.cs" />
     <Compile Include="Entity.cs" />

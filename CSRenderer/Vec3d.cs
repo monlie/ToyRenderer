@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     class Vec3d {
         public static Vec3d Zero = new Vec3d(0f, 0f, 0f);
         public static Vec3d One = new Vec3d(1f, 1f, 1f);

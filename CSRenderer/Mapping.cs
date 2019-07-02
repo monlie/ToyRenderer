@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading.Tasks;
 
 namespace CSRenderer {
+    [Serializable]
     class Mapping {
         private Vec3d[,] image;
         private int width;
