@@ -20,10 +20,10 @@ namespace CSRenderer {
 
             Light[] light = new Light[] { dl1, dl2 };
 
-            PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(0f, -21, 6.5f),
+            PerspectiveCamera camera = new PerspectiveCamera(new Vec3d(0f, -30, 6.5f),
                                                              new Vec3d(0f, 1f, 0f),
                                                              new Vec3d(0f, 0f, 1f),
-                                                             80f);
+                                                             60f);
             List<Entity> scenes = new List<Entity>();
             foreach (Shape shape in StlLoader.Load("Teapot.stl")) {
                 scenes.Add(new Entity(shape, new Vec3d(1f, 0.5f, 0.3f), 0.55f, 0.25f, 0.2f, 0));

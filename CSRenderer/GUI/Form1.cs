@@ -11,7 +11,7 @@ using System.IO;
 
 namespace CSRenderer.GUI {
     public partial class Form1 : Form {
-        private int n = 512;
+        private int n = 256;
 
         public Form1() {
             InitializeComponent();
