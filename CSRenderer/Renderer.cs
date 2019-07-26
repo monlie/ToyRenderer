@@ -12,6 +12,7 @@ namespace CSRenderer {
         private Light[] lights;
         private PerspectiveCamera camera;
         private bool calcReflection = true;
+        public int counter = 0;
 
         private static float matMax(float[,,] mat, int scale) {
             float max = 0f;
@@ -87,6 +88,7 @@ namespace CSRenderer {
                 photo[j, i, 0] = color.x;  // Red
                 photo[j, i, 1] = color.y;  // Green
                 photo[j, i, 2] = color.z;  // Blue
+                counter += 1;
             });
             return photo;
         }

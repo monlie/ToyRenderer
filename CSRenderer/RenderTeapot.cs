@@ -26,7 +26,7 @@ namespace CSRenderer {
                                                              60f);
             List<Entity> scenes = new List<Entity>();
             foreach (Shape shape in StlLoader.Load("Teapot.stl")) {
-                scenes.Add(new Entity(shape, new Vec3d(1f, 0.5f, 0.3f), 0.55f, 0.25f, 0.2f, 0));
+                scenes.Add(new Entity(shape, new Vec3d(1f, 0.5f, 0.3f), 0f, 0f, 0f, 1.2f));
             }
 
             Mapping m1 = new Mapping("C:\\Users\\Mon\\Desktop\\BlackHole\\csrender\\CSRenderer\\CSRenderer\\Mappings\\metro-tiles.jpg");

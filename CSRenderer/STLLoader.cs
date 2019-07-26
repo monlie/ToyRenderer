@@ -28,7 +28,7 @@ namespace CSRenderer {
             }
             bw.Close();
 
-            Console.WriteLine(n);
+            Console.WriteLine(string.Format("total triangles: {0}", n));
 
             return result.ToArray();
         }
